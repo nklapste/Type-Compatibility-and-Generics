@@ -108,4 +108,67 @@ public class ArrayListExample {
         */
     }
 
+// TODO WANTED OUTPUT
+//    Example with a list of shapes with a circle, a cone, and some empty shapes
+//
+//    Circle[radius=1.0]
+//
+//    Cone[radius=2.0, height=3.0]
+//
+//    Circle[radius=0.0]
+//
+//    Cone[radius=0.0, height=0.0]
+//
+//    Rectangle[width=0.0, height=0.0]
+//
+//    Sphere[radius=0.0]
+//
+//    Total number of shapes: 6
+//
+//    Example with a list of rectangles
+//
+//    Rectangle[width=2.0, height=3.0]
+//
+//    Rectangle[width=5.0, height=5.0]
+//
+//    Total number of shapes: 2
+    private static void describe_all(ArrayList<? extends GeometricShape> shapes) {
+        for (GeometricShape shape: shapes){
+            shape.describe();
+        }
+        System.out.println(String.format("Total number of shapes: %d", shapes.size()));
+    }
+
+    /**
+     * Add some generic empty shapes to the inputted GeometricShape ArrayList
+     * @param shapes
+     */
+    private static void add_empties(ArrayList<GeometricShape> shapes) {
+        shapes.add(new Circle(0.0));
+        shapes.add(new Cone(0.0, 0.0));
+        shapes.add(new Rectangle(0.0, 0.0));
+        shapes.add(new Sphere(0.0));
+    }
+
+    private static Double total_area(ArrayList<? extends TwoDShape> flat_shapes) {
+        Double total_area = 0.0;
+        for(TwoDShape shape: flat_shapes){
+            total_area += (Double) shape.area();
+        }
+        return total_area;
+    }
+
+    /**
+     * Return total of all rectangles perimeters
+     * @param shapes
+     * @return
+     */
+    private static Double total_perimeter(ArrayList<? extends Rectangle> shapes) {
+        Double total_perimeter = 0.0;
+        for(Rectangle shape: shapes){
+            total_perimeter += (Double) shape.perimeter();
+        }
+        return total_perimeter;
+    }
+
 }
