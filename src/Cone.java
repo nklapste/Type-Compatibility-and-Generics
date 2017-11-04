@@ -2,11 +2,11 @@
  * Assignment 7: Type Compatibility and Generics <br />
  * The {@code Cone} class
  */
-public class Cone implements ThreeDShape  {
+public class Cone implements ThreeDShape {
 
     private double radius, height;
 
-    public Cone (double radius, double height) {
+    public Cone(double radius, double height) {
         this.radius = radius;
         this.height = height;
     }
@@ -18,4 +18,9 @@ public class Cone implements ThreeDShape  {
     public void describe() {
         System.out.println("Cone[radius=" + radius + ", height=" + height + "]");
     }
+
+    public Cone supersize() {
+        return new Cone(2.0 * radius, 2.0 * height);
+    }
+
 }

@@ -3,51 +3,84 @@ import java.util.ArrayList;
 /**
  * Assignment 7: Type Compatibility and Generics <br />
  * An generic array
+ * <p>
+ * Name: Nathan Klapstein
+ * ID: 1449872
  */
 public class ArrayListExample {
 
     // TODO: Assignment 7 Part 2 -- define the following four methods. No casts allowed!
 
     /**
+     * describe_all -- takes a list of geometric shapes and invokes the "{@code describe}" method
+     * on each of them, then prints out the total number of shapes
+     */
+    private static void describe_all(ArrayList<? extends GeometricShape> shapes) {
+        for (GeometricShape shape : shapes) {
+            shape.describe();
+        }
+        System.out.println(String.format("Total number of shapes: %d", shapes.size()));
+    }
+
+    /**
+     * add_empties -- takes a list of geometric shapes and adds the following objects to it: <br/>
+     * {@code new Circle(0.0);          } <br/>
+     * {@code new Cone(0.0, 0.0);       } <br/>
+     * {@code new Rectangle(0.0, 0.0);  } <br/>
+     * {@code new Sphere(0.0);          }
+     */
+    private static void add_empties(ArrayList<GeometricShape> shapes) {
+        shapes.add(new Circle(0.0));
+        shapes.add(new Cone(0.0, 0.0));
+        shapes.add(new Rectangle(0.0, 0.0));
+        shapes.add(new Sphere(0.0));
+    }
+
+
+    /**
      * total_area -- takes a list of 2d shapes and calculates the total area of those shapes
      */
+    private static Double total_area(ArrayList<? extends TwoDShape> flat_shapes) {
+        Double total_area = 0.0;
+        for (TwoDShape shape : flat_shapes) {
+            total_area += shape.area();
+        }
+        return total_area;
+    }
 
 
     /**
      * total_perimeter -- takes a list of rectangles and calculates the total perimeter
      */
+    private static Double total_perimeter(ArrayList<? extends Rectangle> shapes) {
+        Double total_perimeter = 0.0;
+        for (Rectangle shape : shapes) {
+            total_perimeter += shape.perimeter();
+        }
+        return total_perimeter;
+    }
 
-
-    /**
-     * describe_all -- takes a list of geometric shapes and invokes the "{@code describe}" method
-     * on each of them, then prints out the total number of shapes
-     */
-
-
-    /**
-     * add_empties -- takes a list of geometric shapes and adds the following objects to it: <br/>
-     *      {@code new Circle(0.0);          } <br/>
-     *      {@code new Cone(0.0, 0.0);       } <br/>
-     *      {@code new Rectangle(0.0, 0.0);  } <br/>
-     *      {@code new Sphere(0.0);          }
-     */
-
+    // TODO: Assignment 7 Part 3 -- implement the "supersize_list" method
 
     /**
      * Difficult Question: <br/>
      * supersize_list -- takes an array list of some kind of geometric shapes
      * and returns an array list of the same type, with the shapes super sized
      */
-    // TODO: Assignment 7 Part 3 -- implement the "supersize_list" method
+    private static <T extends GeometricShape<T>> ArrayList<T> supersize_list(ArrayList<T> shapes) {
+        ArrayList<T> superShapes = new ArrayList<>();
+        for (T shape : shapes) {
+            superShapes.add(shape.supersize());
+        }
+        return superShapes;
+    }
 
+    // leave this main method as is: --> No
 
-    // leave this main method as is:
     /**
-     * Main entry
-     * @param args          {@code String[]} Command line arguments
+     * Part 2 tests
      */
-    public static void main(String[] args) {
-        /* ================ Codes for Part 2 ================ */
+    public static void test_part_2() {
         // Make a list of shapes, add a circle, a cone and some empty shapes, and then describe all of the shapes
         System.out.println("Example with a list of shapes with a circle,  a cone, and some empty shapes");
         ArrayList<GeometricShape> shapes = new ArrayList<GeometricShape>();
@@ -84,9 +117,12 @@ public class ArrayListExample {
         System.out.println();
         System.out.println("Example list of spheres");
         describe_all(spheres);
+    }
 
-        /* ================ Codes for Part 3 the difficult question ================ */
-        /*
+    /**
+     * Part 3 tests
+     */
+    public static void test_part_3() {
         // Make a list of rectangles and add some rectangles.
         ArrayList<Rectangle> rects = new ArrayList<Rectangle>();
         rects.add(new Rectangle(2.0, 3.0));
@@ -105,70 +141,18 @@ public class ArrayListExample {
         System.out.println("super-sizing a list of spheres");
         ArrayList<Sphere> double_spheres = supersize_list(spheres);
         describe_all(double_spheres);
-        */
-    }
-
-// TODO WANTED OUTPUT
-//    Example with a list of shapes with a circle, a cone, and some empty shapes
-//
-//    Circle[radius=1.0]
-//
-//    Cone[radius=2.0, height=3.0]
-//
-//    Circle[radius=0.0]
-//
-//    Cone[radius=0.0, height=0.0]
-//
-//    Rectangle[width=0.0, height=0.0]
-//
-//    Sphere[radius=0.0]
-//
-//    Total number of shapes: 6
-//
-//    Example with a list of rectangles
-//
-//    Rectangle[width=2.0, height=3.0]
-//
-//    Rectangle[width=5.0, height=5.0]
-//
-//    Total number of shapes: 2
-    private static void describe_all(ArrayList<? extends GeometricShape> shapes) {
-        for (GeometricShape shape: shapes){
-            shape.describe();
-        }
-        System.out.println(String.format("Total number of shapes: %d", shapes.size()));
     }
 
     /**
-     * Add some generic empty shapes to the inputted GeometricShape ArrayList
-     * @param shapes
+     * Main entry
+     *
+     * @param args {@code String[]} Command line arguments
      */
-    private static void add_empties(ArrayList<GeometricShape> shapes) {
-        shapes.add(new Circle(0.0));
-        shapes.add(new Cone(0.0, 0.0));
-        shapes.add(new Rectangle(0.0, 0.0));
-        shapes.add(new Sphere(0.0));
-    }
+    public static void main(String[] args) {
+        /* ================ Codes for Part 2 ================ */
+        test_part_2();
 
-    private static Double total_area(ArrayList<? extends TwoDShape> flat_shapes) {
-        Double total_area = 0.0;
-        for(TwoDShape shape: flat_shapes){
-            total_area += (Double) shape.area();
-        }
-        return total_area;
+        /* ================ Codes for Part 3 the difficult question ================ */
+        test_part_3();
     }
-
-    /**
-     * Return total of all rectangles perimeters
-     * @param shapes
-     * @return
-     */
-    private static Double total_perimeter(ArrayList<? extends Rectangle> shapes) {
-        Double total_perimeter = 0.0;
-        for(Rectangle shape: shapes){
-            total_perimeter += (Double) shape.perimeter();
-        }
-        return total_perimeter;
-    }
-
 }

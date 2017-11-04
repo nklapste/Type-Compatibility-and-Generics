@@ -1,15 +1,19 @@
 /**
  * Assignment 7: Type Compatibility and Generics <br />
  * An generic array
+ * <p>
+ * Name: Nathan Klapstein
+ * ID: 1449872
  */
 public class ArrayExampleGood {
 
     /**
      * Main entry
-     * @param args          {@code String[]} Command line arguments
+     *
+     * @param args {@code String[]} Command line arguments
      */
     public static void main(String[] args) {
-        // Assignment 7 Part 1-2
+        // TODO: Assignment 7 Part 1-2
         // You should add statements to this code as needed, so that
         // the code compiles correctly, and runs without error.
         GeometricShape[] geoshapes = new GeometricShape[2]; // Reference generic "shape" allows both circle and cone

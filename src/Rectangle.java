@@ -6,7 +6,7 @@ public class Rectangle implements TwoDShape {
 
     private double width, height;
 
-    public Rectangle (double width, double height) {
+    public Rectangle(double width, double height) {
         this.width = width;
         this.height = height;
     }
@@ -23,4 +23,7 @@ public class Rectangle implements TwoDShape {
         System.out.println("Rectangle[width=" + width + ", height=" + height + "]");
     }
 
+    public Rectangle supersize() {
+        return new Rectangle(2.0 * width, 2.0 * height);
+    }
 }

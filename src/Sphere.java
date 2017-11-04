@@ -2,11 +2,11 @@
  * Assignment 7: Type Compatibility and Generics <br />
  * The {@code Sphere} class
  */
-public class Sphere implements ThreeDShape  {
+public class Sphere implements ThreeDShape {
 
     private double radius;
 
-    public Sphere (double radius) {
+    public Sphere(double radius) {
         this.radius = radius;
     }
 
@@ -18,4 +18,7 @@ public class Sphere implements ThreeDShape  {
         System.out.println("Sphere[radius=" + radius + "]");
     }
 
+    public Sphere supersize() {
+        return new Sphere(2.0 * radius);
+    }
 }

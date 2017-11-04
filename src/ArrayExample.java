@@ -1,15 +1,19 @@
 /**
  * Assignment 7: Type Compatibility and Generics <br />
  * A generic array
+ * <p>
+ * Name: Nathan Klapstein
+ * ID: 1449872
  */
 public class ArrayExample {
 
     /**
      * Main entry
-     * @param args          {@code String[]} Command line arguments
+     *
+     * @param args {@code String[]} Command line arguments
      */
     public static void main(String[] args) {
-        // Assignment 7 Part 1-1
+        // TODO: Assignment 7 Part 1-1
         // You should add statements to this code as needed, so that
         // the code compiles correctly; and when it is running, it raises
         // a java.lang.ArrayStoreException for adding the cone to geoshapes.

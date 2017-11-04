@@ -6,7 +6,7 @@ public class Circle implements TwoDShape {
 
     private double radius;
 
-    public Circle (double radius) {
+    public Circle(double radius) {
         this.radius = radius;
     }
 
@@ -20,6 +20,10 @@ public class Circle implements TwoDShape {
 
     public void describe() {
         System.out.println("Circle[radius=" + radius + "]");
+    }
+
+    public Circle supersize() {
+        return new Circle(2.0 * radius);
     }
 
 }
