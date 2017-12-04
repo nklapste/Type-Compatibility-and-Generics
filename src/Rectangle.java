@@ -2,7 +2,7 @@
  * Assignment 7: Type Compatibility and Generics <br />
  * The {@code Rectangle} class
  */
-public class Rectangle implements TwoDShape {
+public class Rectangle implements TwoDShape<Rectangle> {
 
     private double width, height;
 

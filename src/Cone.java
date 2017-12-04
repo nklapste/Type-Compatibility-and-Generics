@@ -2,7 +2,7 @@
  * Assignment 7: Type Compatibility and Generics <br />
  * The {@code Cone} class
  */
-public class Cone implements ThreeDShape {
+public class Cone implements ThreeDShape<Cone> {
 
     private double radius, height;
 

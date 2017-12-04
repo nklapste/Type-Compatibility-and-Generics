@@ -2,7 +2,7 @@
  * Assignment 7: Type Compatibility and Generics <br />
  * The {@code Circle} class
  */
-public class Circle implements TwoDShape {
+public class Circle implements TwoDShape<Circle> {
 
     private double radius;
 

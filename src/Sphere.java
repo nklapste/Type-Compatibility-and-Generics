@@ -2,7 +2,7 @@
  * Assignment 7: Type Compatibility and Generics <br />
  * The {@code Sphere} class
  */
-public class Sphere implements ThreeDShape {
+public class Sphere implements ThreeDShape<Sphere> {
 
     private double radius;
 
